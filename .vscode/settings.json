@@ -1,0 +1,12 @@
+{
+	"window.autoDetectColorScheme": false,
+	"workbench.colorTheme": "Noctis Sereno",
+	"editor.defaultFormatter": "biomejs.biome",
+	"[javascript][json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"editor.formatOnSave": true
+}
