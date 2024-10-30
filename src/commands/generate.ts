@@ -27,9 +27,7 @@ export async function generate_collection_async(): Promise<void> {
 
 	const { products } = await get_products_async();
 
-	Logger.log("Generating project collection...");
-
-	Logger.log("Checking package.json for unofficial keys...");
+	Logger.log("Checking package.json for product keys...");
 
 	const unofficial_keys = get_unofficial_pkg_json_keys(pkg_json);
 
@@ -40,11 +38,9 @@ export async function generate_collection_async(): Promise<void> {
 			products
 		);
 		found_products = [...found_products, ...pkg_json_key_products];
-	} else {
-		Logger.warn("No unofficial pkg.json keys found");
 	}
 
-	Logger.log("Checking root dir for configs...");
+	Logger.log("Checking root dir for product configs...");
 
 	const project_root_file_names =
 		await get_project_root_contents_async(project_root);

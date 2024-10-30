@@ -2,7 +2,7 @@ import os from "node:os";
 import { join } from "node:path";
 import confirm from "@inquirer/confirm";
 import fs from "node:fs";
-import { CLI_DIR } from "../../constants.js";
+import { CLI_DIR, CLI_NAME } from "../../constants.js";
 import { spawn_async } from "../exec/spawn.js";
 import chalk from "chalk";
 import { Logger } from "../output/logger.js";
@@ -80,19 +80,23 @@ export async function maybe_exit_on_git_status_async(): Promise<boolean> {
 }
 
 /**
- * Adds desired Linkli paths to project's .gitignore file.
+ * Adds desired Linkli paths to project's .gitignore file if not found.
  *
  * @export
  * @async
  * @param {string} path
- * @param {*} [ignore=CLI_DIR]
+ * @param {string} [ignore_pattern=CLI_DIR]
+ * @param {string} [comment_header=`# ${CLI_NAME} local directory`]
  * @returns {Promise<boolean>}
  */
 export async function add_to_git_ignore_async(
 	path: string,
-	ignore = CLI_DIR
+	ignore_pattern: string = CLI_DIR,
+	comment_header = `# ${CLI_NAME} local directory`
 ): Promise<boolean> {
 	let is_git_ignore_updated = false;
+
+	const ignore_content_to_add = `${comment_header}\n${ignore_pattern}\n`;
 	try {
 		const git_ignore_path = join(path, ".gitignore");
 
@@ -102,10 +106,10 @@ export async function add_to_git_ignore_async(
 		const EOL = git_ignore.includes("\r\n") ? "\r\n" : os.EOL;
 		let content_modified = false;
 
-		if (!git_ignore.split(EOL).includes(ignore)) {
+		if (!git_ignore.split(EOL).includes(ignore_pattern)) {
 			git_ignore += `${
 				git_ignore.endsWith(EOL) || git_ignore.length === 0 ? "" : EOL
-			}${ignore}${EOL}`;
+			}${ignore_content_to_add}${EOL}`;
 			content_modified = true;
 		}
 

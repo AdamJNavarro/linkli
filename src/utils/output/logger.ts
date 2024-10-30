@@ -15,6 +15,7 @@ export function warn(...message: string[]): void {
 
 export function log(...message: string[]): void {
 	console.log(...message);
+	console.log();
 }
 
 /** Clear the terminal of all text. */

@@ -174,10 +174,10 @@ dist
 # Finder (MacOS) folder config
 .DS_Store
 
-# linkli
-.linkli
-db.ts
-
 # Mac folder Icon
 Icon?
 ![iI]con[_a-zA-Z0-9]
+
+# linkli local directory
+.linkli
+

@@ -9,6 +9,7 @@ import {
 	maybe_exit_on_git_status_async,
 } from "../utils/git/index.ts";
 import { find_project_root_or_assert } from "../utils/filesys/project-root.ts";
+import { CLI_NAME } from "../constants.ts";
 
 export async function init_project_async(): Promise<void> {
 	const project_root = find_project_root_or_assert(process.cwd());
@@ -30,8 +31,6 @@ export async function init_project_async(): Promise<void> {
 	const gitignore_was_updated = await add_to_git_ignore_async(project_root);
 
 	if (gitignore_was_updated) {
-		Logger.log("Added patterns to gitignore.");
-	} else {
-		Logger.log("Desired patterns already found in gitignore.");
+		Logger.log(`Added ${CLI_NAME} patterns to gitignore.`);
 	}
 }
