@@ -28,7 +28,7 @@ function parse_ts_config(tsconfig_path) {
 }
 
 async function build_cli(cwd = process.cwd()) {
-	const config_path = path.join(cwd, "tsconfig.json");
+	const config_path = path.join(cwd, "tsconfig.build.json");
 	const tsconfig = parse_ts_config(config_path);
 
 	if (!tsconfig) {
