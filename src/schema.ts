@@ -39,9 +39,6 @@ const list_opts = {
 		.desc("Used to provide output for Amazon Q.")
 		.default(false)
 		.hidden(),
-	custom: boolean()
-		.desc("Show custom items in your project collection.")
-		.default(false),
 };
 
 export type ListOpts = TypeOf<typeof list_opts>;
