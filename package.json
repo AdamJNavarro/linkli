@@ -36,7 +36,9 @@
 		"esbuild": "0.24.0",
 		"get-bin-path": "^11.0.0",
 		"husky": "^9.1.6",
-		"typescript": "^5.6.3"
+		"typescript": "^5.6.3",
+		"vite-tsconfig-paths": "^5.0.1",
+		"vitest": "^2.1.4"
 	},
 	"dependencies": {
 		"@drizzle-team/brocli": "latest",
@@ -58,12 +60,13 @@
 	"scripts": {
 		"build": "bun scripts/build.ts",
 		"dev": "bun ./src/index.ts",
-		"format-check": "biome format ./src ./scripts ./testing",
-		"format-write": "biome format --write ./src ./scripts ./testing",
-		"lint-check": "biome lint --error-on-warnings ./src ./scripts ./testing",
-		"lint-write": "biome lint --write ./src ./scripts ./testing",
+		"format-check": "biome format",
+		"format-write": "biome format --write",
+		"lint-check": "biome lint --error-on-warnings",
+		"lint-write": "biome lint --write",
 		"lint-tsc": "tsc --noEmit",
 		"test-ava": "ava",
+		"test-vitest": "vitest",
 		"prepare": "husky"
 	},
 	"ava": {
