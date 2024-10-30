@@ -58,7 +58,7 @@
 		"write-file-atomic": "^6.0.0"
 	},
 	"scripts": {
-		"build": "rm -rf ./dist && bun scripts/build.ts",
+		"build": "bun scripts/build.ts",
 		"dev": "bun ./src/index.ts",
 		"format-check": "biome format",
 		"format-write": "biome format --write",
