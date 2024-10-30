@@ -7,6 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
+		"include": ["scripts", "src", "testing"],
 		"ignore": [".husky", "dist"]
 	},
 	"formatter": {
