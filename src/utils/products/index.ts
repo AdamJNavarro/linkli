@@ -63,6 +63,35 @@ export async function find_products_by_footprint(
 	return found_items;
 }
 
+/**
+ * Checks for and adds companion products.
+ *
+ * @export
+ * @param {LinkliProduct[]} all_products
+ * @param {LinkliProduct[]} found_products
+ * @returns {LinkliProduct[]}
+ */
+export function add_product_companions(
+	all_products: LinkliProduct[],
+	found_products: LinkliProduct[]
+): LinkliProduct[] {
+	let companion_names: string[] = [];
+	for (let i = 0; i < found_products.length; i++) {
+		const product = found_products[i];
+		if (product.companions) {
+			companion_names = [...companion_names, ...product.companions];
+		}
+	}
+	if (companion_names.length === 0) {
+		return found_products;
+	}
+
+	const unique_names = [...new Set(companion_names)];
+	const { found_items } = find_products_by_name(unique_names, all_products);
+	if (found_items.length === 0) return found_products;
+	return [...found_products, ...found_items];
+}
+
 type ProductSearchByNameResult = {
 	found_items: LinkliProduct[];
 	invalid_values: string[];

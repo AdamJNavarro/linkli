@@ -13,7 +13,10 @@ import {
 	get_unofficial_pkg_json_keys,
 } from "../utils/filesys/pkg-json.ts";
 import { get_products_async } from "../api/methods/get_products_async.ts";
-import { find_products_by_footprint } from "../utils/products/index.ts";
+import {
+	add_product_companions,
+	find_products_by_footprint,
+} from "../utils/products/index.ts";
 import type { LinkliProduct } from "../types.ts";
 
 export async function generate_collection_async(): Promise<void> {
@@ -56,8 +59,16 @@ export async function generate_collection_async(): Promise<void> {
 
 	if (found_products.length) {
 		// create collection
+
+		const found_products_with_companions = add_product_companions(
+			products,
+			found_products
+		);
+
 		const unique_products = [
-			...new Map(found_products.map((item) => [item.name, item])).values(),
+			...new Map(
+				found_products_with_companions.map((item) => [item.name, item])
+			).values(),
 		];
 
 		const sorted_found_names = unique_products
@@ -72,6 +83,6 @@ export async function generate_collection_async(): Promise<void> {
 
 		await generate_collection_file({ project_root, products: unique_products });
 	} else {
-		// who knows
+		// handle no found products flow OR default to adding linkli so collection always created
 	}
 }
