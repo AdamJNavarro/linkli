@@ -1,0 +1,8 @@
+{
+    "name": "@linkli/cli",
+    "version": "0.0.1",
+    "exports": "./src/index.ts",
+    "publish": {
+        "include": ["src", "README.md", "LICENSE", "jsr.json"]
+    }
+  }
