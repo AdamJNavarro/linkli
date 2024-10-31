@@ -1,0 +1,10 @@
+name: 'Verify and Release'
+
+on: workflow_dispatch
+
+permissions: write-all
+
+jobs:
+  verify:
+    uses: ./.github/workflows/verify.yml
+    secrets: inherit
