@@ -1,0 +1,32 @@
+name: 'Verify and Release'
+
+on:
+  workflow_dispatch:
+      inputs:
+          publish_to_npm:
+              description: "Publish package to NPM"
+              required: false
+              type: boolean
+              default: true
+          publish_to_jsr:
+              description: "Publish package to JSR"
+              required: false
+              type: boolean
+              default: true
+
+permissions: write-all
+
+jobs:
+  verify:
+    uses: ./.github/workflows/verify.yml
+    secrets: inherit
+  npm-publish:
+    if: ${{ github.event.inputs.publish_to_npm }}
+    uses: ./.github/workflows/npm-publish.yml
+    secrets: inherit
+    needs: verify
+  jsr-publish:
+    if: ${{ github.event.inputs.publish_to_jsr }}
+    uses: ./.github/workflows/jsr-publish.yml
+    secrets: inherit
+    needs: verify
