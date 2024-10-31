@@ -1,25 +1,57 @@
 # linkli
 
+Find and open links to the docs for popular tech products all from the comfort of your terminal.
+
+## Installation
+
+> Linkli requires [Node.js](https://nodejs.org) version 18 or above.
+
+To install the latest version of linkli, run the following command
+
 ```bash
 npm i -g linkli
 ```
 
-### Open Some Documentation
+Linkli is meant to be installed globally which enables you to quickly open links whether your in a valid project directory or not.
+
+## Setup
+
+For the best experience, it is highly recommended to have [Amazon Q](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html) (formerly known as fig) installed and up to date.
+
+The autocompletion provided allows linkli to prioritize and suggest products found within a project when running the `linkli open` command.
+
+## Usage
+
+Once installed globally, you can use the `linkli` command or `lkl` alias.
 
 ```bash
-linkli open bun
+linkli [command]
 ```
 
-### Generate a per-project collection
+#### Opening a link
 
-In the root directory of a project containing a `package.json`, run:
+```bash
+linkli open drizzle
+```
+
+#### Search available products
+
+```bash
+linkli search
+```
+
+#### Find products in your project
+
+In the root dir of a project that has both a `package.json` and `git` repository, run the following command
+
+```bash
+linkli init
+```
+
+Doing so will add linkli to your `.gitignore` and then linkli will look for product footprints in your project to generate a project-specific collection of links. The output will be written to `.linkli/collection.json`.
+
+To generate a fresh collection, say if your project's tech stack has changed, run the following command
 
 ```bash
 linkli generate
 ```
-
-Linkli will look at your project's `package.json` and the contents of the root dir in an attempt to find any footprints of popular products. The results will be written to the `.linkli` folder in your projects root dir.
-
-### Auto-complete Suggestions
-
-When running `linkli open` while in a project that has a valid Linkli collection, your terminal suggestions (by way of Amazon Q a.k.a Fig) will prioritize the products that are found in the local collection.
