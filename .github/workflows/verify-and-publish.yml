@@ -1,4 +1,4 @@
-name: 'Verify and Release'
+name: 'Verify and Publish'
 
 on:
   workflow_dispatch:
@@ -21,12 +21,11 @@ jobs:
     uses: ./.github/workflows/verify.yml
     secrets: inherit
   npm-publish:
-    if: ${{ github.event.inputs.publish_to_npm }}
+    if: ${{ inputs.publish_to_npm }}
     uses: ./.github/workflows/npm-publish.yml
     secrets: inherit
     needs: verify
   jsr-publish:
-    if: ${{ github.event.inputs.publish_to_jsr }}
+    if: ${{ inputs.publish_to_jsr }}
     uses: ./.github/workflows/jsr-publish.yml
-    secrets: inherit
     needs: verify
