@@ -1,0 +1,31 @@
+name: NPM release
+
+on:
+  workflow_call:
+    secrets:
+      NPM_TOKEN:
+        required: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+          registry-url: "https://registry.npmjs.org"
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+      - name: Run build
+        run: bun run build
+      - name: Pack
+        env:
+            BUN_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+            bun run pack    
+      - name: Publish
+        env:
+            BUN_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+            bun run publish --access public --dry-run    

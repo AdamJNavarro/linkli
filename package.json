@@ -66,6 +66,8 @@
 		"lint-tsc": "tsc --noEmit",
 		"test-ava": "ava",
 		"test-vitest": "vitest",
+		"pack": "(cd dist && bun pm pack --destination ..) && rm -f package.tgz && mv -f *.tgz package.tgz",
+		"publish": "bun publish package.tgz",
 		"prepare": "husky"
 	},
 	"ava": {
