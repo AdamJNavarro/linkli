@@ -12,4 +12,4 @@ jobs:
           bun-version: latest
       - name: Install Dependencies
         run: bun install --frozen-lockfile
-      - run: npx jsr publish --allow-slow-types --allow-dirty --dry-run
+      - run: bunx jsr publish --allow-slow-types --allow-dirty --dry-run
