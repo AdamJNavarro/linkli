@@ -1,7 +1,7 @@
 import ts from "typescript";
 import path from "node:path";
 import { build } from "esbuild";
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, copyFileSync } from "node:fs";
 
 function parse_ts_config(tsconfig_path) {
 	const parsed_config = ts.readConfigFile(tsconfig_path, ts.sys.readFile);
@@ -64,6 +64,7 @@ async function build_cli(cwd = process.cwd()) {
 	const dist_pkg_json_path = path.join("./dist", "package.json");
 
 	writeFileSync(dist_pkg_json_path, JSON.stringify(pkg_json, null, 2));
+	copyFileSync("README.md", "dist/README.md");
 }
 
 await build_cli();
