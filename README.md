@@ -22,7 +22,7 @@ The autocompletion provided allows linkli to prioritize and suggest products fou
 
 ## Usage
 
-Once installed globally, you can use the `linkli` command or `lkl` alias.
+Once installed globally, you can use the `linkli` command.
 
 ```bash
 linkli [command]

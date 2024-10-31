@@ -5,8 +5,7 @@
 	"description": "The Linkli CLI",
 	"type": "module",
 	"bin": {
-		"linkli": "./dist/index.js",
-		"lkl": "./dist/index.js"
+		"linkli": "./dist/index.js"
 	},
 	"files": ["dist"],
 	"engines": {
