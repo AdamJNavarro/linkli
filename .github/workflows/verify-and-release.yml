@@ -11,3 +11,4 @@ jobs:
   npm-release:
     uses: ./.github/workflows/npm-release.yml
     secrets: inherit
+    needs: verify
