@@ -55,3 +55,7 @@ To generate a fresh collection, say if your project's tech stack has changed, ru
 ```bash
 linkli generate
 ```
+
+#### Acknowledgements
+
+In order to quickly get a prototype working, I used the following CLIs: [expo](https://github.com/expo/expo/tree/main/packages/%40expo/cli), [vercel](https://github.com/vercel/vercel/tree/main/packages/cli) and [netlify](https://github.com/netlify/cli) as a reference and in some cases re-used code (mainly in the form of util functions) so I thank all contributors of the aforementioned projects.
