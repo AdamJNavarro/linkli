@@ -1,24 +1,8 @@
 # linkli
 
+> NO LONGER AVAILABLE. This was a quick hobby project that quickly lost its value with the rapid development of AI-enabled terminals and IDEs.
+
 Find and open links to the docs for popular tech products all from the comfort of your terminal.
-
-## Installation
-
-> Linkli requires [Node.js](https://nodejs.org) version 18 or above.
-
-To install the latest version of linkli, run the following command
-
-```bash
-npm i -g linkli
-```
-
-Linkli is meant to be installed globally which enables you to quickly open links whether your in a valid project directory or not.
-
-## Setup
-
-For the best experience, it is highly recommended to have [Amazon Q](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html) (formerly known as fig) installed and up to date.
-
-The autocompletion provided allows linkli to prioritize and suggest products found within a project when running the `linkli open` command.
 
 ## Usage
 
